@@ -1,0 +1,6 @@
+﻿  ArgumentsParser.cpp
+  BooleanSwitchArgument.cpp
+  PocArgs.cpp
+  PositionalArgument.cpp
+  Generating Code...
+  PocArgs.vcxproj -> C:\Users\dev\source\repos\PocArgs\x64\Debug\PocArgs.exe
