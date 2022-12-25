@@ -11,7 +11,7 @@ ArgumentsParser parseArgs(int argc, char* argv[]) {
 	parser.add_string_argument("target", "-t", "--target", "", true, "IP or adress of the target machine");
 	parser.add_string_argument("port", "-p", "--port", "", true, "Port of the target machine");
 
-	parser.add_boolean_switch_argument("verbose", "-v", "--verbose", false, false, "Verbose mode. (default: false)");
+	parser.add_boolean_switch_argument("verbose", "-v", "--verbose", false, false, "Verbose mode.");
 
 	parser.parse_args(argc, argv);
 	return parser;

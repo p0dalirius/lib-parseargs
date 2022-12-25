@@ -163,7 +163,7 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 	if (this->optionalArguments.size() != 0) {
 		std::cout << "Optional arguments:\n";
 		for (auto& arg_ptr : this->optionalArguments) {
-			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << "\n";
+			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << " (default: " << arg_ptr.defaultValue << ")" << "\n";
 		}
 		std::cout << "\n";
 	}

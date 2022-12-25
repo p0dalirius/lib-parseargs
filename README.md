@@ -21,19 +21,19 @@
 
 ```cpp
 #include <iostream>
-#include "ArgumentsParser.h"
+#include "ArgumentsParser/ArgumentsParser.h"
 
 
 ArgumentsParser parseArgs(int argc, char* argv[]) {
 	ArgumentsParser parser = ArgumentsParser();
 
-	parser.add_positional_argument(PositionalArgument("mode", "Operation mode"));
-	parser.add_positional_argument(PositionalArgument("another", "Another positional"));
+	parser.add_positional_string_argument("mode", "Operation mode");
+	parser.add_positional_string_argument("another", "Another positional");
 
-	parser.add_argument(Argument("target", "-t", "--target", "", true, "IP or adress of the target machine"));
-	parser.add_argument(Argument("port", "-p", "--port", "", true, "Port of the target machine"));
+	parser.add_string_argument("target", "-t", "--target", "", true, "IP or adress of the target machine");
+	parser.add_string_argument("port", "-p", "--port", "", true, "Port of the target machine");
 
-	parser.add_argument(BooleanSwitchArgument("verbose", "-v", "--verbose", false, false, "Verbose mode. (default: false)"));
+	parser.add_boolean_switch_argument("verbose", "-v", "--verbose", false, false, "Verbose mode.");
 
 	parser.parse_args(argc, argv);
 	return parser;
@@ -42,7 +42,6 @@ ArgumentsParser parseArgs(int argc, char* argv[]) {
 
 int main(int argc, char* argv[]) {
 	ArgumentsParser parser = parseArgs(argc, argv);
- 
 }
 
 ```
@@ -50,6 +49,7 @@ int main(int argc, char* argv[]) {
 Output:
 
 ```
+C:\Users\dev\> .\PocArgs.exe
 Usage: PocArgs.exe <mode> <another> [-p port] [-t target] [-v verbose]
 
 Positional arguments:
@@ -58,8 +58,9 @@ Positional arguments:
 
 Required arguments:
    -t, --target IP or adress of the target machine
-   -p, --port Port of the target machine.
+   -p, --port Port of the target machine
 
 Optional arguments:
    -v, --verbose Verbose mode. (default: false)
+
 ```
