@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 {
 	ArgumentsParser parser = parseArgs(argc, argv);
 
-	//if (parser.arguments["verbose"].value == true) {
+	//if (parser.getValue("verbose") == true) {
 	//	std::cout << "Verbose = true";
 	//}
 	//else {

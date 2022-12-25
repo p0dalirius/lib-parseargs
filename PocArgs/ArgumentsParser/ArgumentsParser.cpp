@@ -26,9 +26,13 @@ int ArgumentsParser::parse_args(int argc, char* argv[]) {
 		this->help(argc, argv);
 		return -1;
 	} else {
-		// Parse tokens from the command line 
-		
+		// Parse positional arguments from the command line 
 		for (auto& arg_ptr : this->positionalArguments) {
+			current_arg_index = arg_ptr.parse(argc, argv, current_arg_index);
+			this->arguments.insert({ arg_ptr.name, arg_ptr.value });
+		}
+		// Parse all other arguments from the command line
+		for (auto& arg_ptr : this->allArguments) {
 			current_arg_index = arg_ptr.parse(argc, argv, current_arg_index);
 			this->arguments.insert({ arg_ptr.name, arg_ptr.value });
 		}
@@ -76,9 +80,10 @@ void ArgumentsParser::add_boolean_switch_argument(const std::string& name, const
 		);
 	}
 
-	this->positionalArguments.push_back(arg);
 	if (arg.required == true) {
 		this->mandatoryArguments.push_back(arg);
+	} else {
+		this->optionalArguments.push_back(arg);
 	}
 	this->allArguments.push_back(arg);
 }
@@ -94,9 +99,11 @@ void ArgumentsParser::add_string_argument(const std::string& name, const std::st
 		required,
 		help
 	);
-	this->positionalArguments.push_back(arg);
 	if (arg.required == true) {
 		this->mandatoryArguments.push_back(arg);
+	}
+	else {
+		this->optionalArguments.push_back(arg);
 	}
 	this->allArguments.push_back(arg);
 }
@@ -112,7 +119,6 @@ void ArgumentsParser::add_int_argument(const std::string& name, const std::strin
 		required,
 		help
 	);
-	this->positionalArguments.push_back(arg);
 	if (arg.required == true) {
 		this->mandatoryArguments.push_back(arg);
 	}

@@ -1,9 +1,7 @@
 #include "Argument.h"
 #include <iostream>
 
-Argument::Argument() {
-	// std::cout << "[debug] Calling Argument::Argument()\n";
-}
+Argument::Argument() {}
 
 Argument::Argument(const std::string& name, ArgumentType argumentType, const std::string& shortoption, const std::string& longoption, const std::string& defaultValue, bool required, const std::string& help)
 	: name(name),
@@ -20,8 +18,6 @@ Argument::Argument(const std::string& name, ArgumentType argumentType, const std
 
 
 int Argument::parse(int argc, char* argv[], int current_index) {
-	
-	// std::cout << "[debug] Calling Argument::parse(int argc, char* argv[], int current_index)\n";
 
 	if (this->argumentType == ArgumentType::BooleanSwitchArgument) {
 		// Parsing BooleanSwitchArgument
@@ -36,6 +32,7 @@ int Argument::parse(int argc, char* argv[], int current_index) {
 		}
 	}
 	else if (this->argumentType == ArgumentType::StringArgument) {
+		// Parsing StringArgument
 		if (current_index <= (argc-2)) {
 			if ((argv[current_index] == this->shortoption) || (argv[current_index] == this->longoption)) {
 				this->value = argv[current_index + 1];
@@ -44,12 +41,15 @@ int Argument::parse(int argc, char* argv[], int current_index) {
 		}
 	}
 	else if (this->argumentType == ArgumentType::IntegerArgument) {
+		// Parsing IntegerArgument
 
 	}
 	else if (this->argumentType == ArgumentType::PositionalIntegerArgument) {
+		// Parsing PositionalIntegerArgument
 
 	}
 	else if (this->argumentType == ArgumentType::PositionalStringArgument) {
+		// Parsing PositionalStringArgument
 		if (current_index <= (argc - 1)) {
 			this->value = argv[current_index];
 			current_index += 1;
