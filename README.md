@@ -15,6 +15,8 @@
  - [x] Positional arguments.
  - [x] Parsing of arguments and printing of help message if missing mandatory arguments.
 
+![image](https://user-images.githubusercontent.com/79218792/209481333-ff7c23f1-684e-425a-90e5-b5a255d38c20.png)
+
 ## Example code
 
 ```cpp
