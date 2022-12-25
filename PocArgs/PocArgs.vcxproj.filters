@@ -24,16 +24,13 @@
     <ClCompile Include="PocArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BooleanSwitchArgument.cpp">
-      <Filter>Source Files\ArgumentsParser</Filter>
-    </ClCompile>
     <ClCompile Include="Argument.cpp">
       <Filter>Source Files\ArgumentsParser</Filter>
     </ClCompile>
     <ClCompile Include="ArgumentsParser.cpp">
       <Filter>Source Files\ArgumentsParser</Filter>
     </ClCompile>
-    <ClCompile Include="PositionalArgument.cpp">
+    <ClCompile Include="ArgumentType.cpp">
       <Filter>Source Files\ArgumentsParser</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,10 +41,7 @@
     <ClInclude Include="Argument.h">
       <Filter>Header Files\ArgumentsParser</Filter>
     </ClInclude>
-    <ClInclude Include="BooleanSwitchArgument.h">
-      <Filter>Header Files\ArgumentsParser</Filter>
-    </ClInclude>
-    <ClInclude Include="PositionalArgument.h">
+    <ClInclude Include="ArgumentType.h">
       <Filter>Header Files\ArgumentsParser</Filter>
     </ClInclude>
   </ItemGroup>

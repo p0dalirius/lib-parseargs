@@ -127,17 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Argument.cpp" />
-    <ClCompile Include="ArgumentsParser.cpp" />
-    <ClCompile Include="BooleanSwitchArgument.cpp" />
+    <ClCompile Include="ArgumentsParser\Argument.cpp" />
+    <ClCompile Include="ArgumentsParser\ArgumentsParser.cpp" />
+    <ClCompile Include="ArgumentsParser\ArgumentType.cpp" />
     <ClCompile Include="PocArgs.cpp" />
-    <ClCompile Include="PositionalArgument.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Argument.h" />
-    <ClInclude Include="ArgumentsParser.h" />
-    <ClInclude Include="BooleanSwitchArgument.h" />
-    <ClInclude Include="PositionalArgument.h" />
+    <ClInclude Include="ArgumentsParser\Argument.h" />
+    <ClInclude Include="ArgumentsParser\ArgumentsParser.h" />
+    <ClInclude Include="ArgumentsParser\ArgumentType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
