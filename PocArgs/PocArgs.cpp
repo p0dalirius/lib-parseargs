@@ -28,4 +28,6 @@ int main(int argc, char* argv[])
 	else {
 		std::cout << "Verbose = false";
 	}
+
+	parser.debug();
 }

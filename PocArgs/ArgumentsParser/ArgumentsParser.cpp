@@ -158,16 +158,31 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 		}
 		std::cout << "\n";
 	}
+	// Exits the program
+	exit(0);
 }
 
 
 void ArgumentsParser::debug() {
+	type_of_arguments_value value;
+	std::string name;
+
 	std::cout << "[debug] len(parser.arguments) = " << this->arguments.size() << "\n";
 
 	for (auto& arg: this->arguments) {
-		std::cout << " - " << std::get<0>(arg) << " = " << "std::get<1>(arg)" << "\n";
+		name = std::get<0>(arg);
+		value = std::get<1>(arg);
+		if (std::holds_alternative<std::string>(value)) {
+			std::cout << " - (string) " << name << " = " << std::get<std::string>(value) << "\n";
+		} else if (std::holds_alternative<int>(value)) {
+			std::cout << " - (int)    " << name << " = " << std::get<int>(value) << "\n";
+		} else if (std::holds_alternative<bool>(value)) {
+			if (std::get<bool>(value) == true) {
+				std::cout << " - (bool)   " << name << " = " << "true" << "\n";
+			}
+			else {
+				std::cout << " - (bool)   " << name << " = " << "false" << "\n";
+			}
+		}
 	}
-	//for (std::map<std::string, type_of_arguments_value>::iterator it = this->arguments.begin(); it != this->arguments.end(); ++it) {
-	//	//std::cout << " - " << it->first << " = " << it->second << "\n";
-	//}
 }
