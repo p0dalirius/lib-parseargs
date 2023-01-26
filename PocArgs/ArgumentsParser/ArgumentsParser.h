@@ -30,6 +30,8 @@ class ArgumentsParser
         
         void debug();
 
+        ArgumentsParser();
+
     private:
         std::map<std::string, type_of_arguments_value> arguments;
 

@@ -7,7 +7,7 @@ ArgumentsParser parseArgs(int argc, char* argv[]) {
 
 	parser.add_positional_string_argument("mode", "Operation mode");
 	parser.add_positional_string_argument("another", "Another positional");
-
+	
 	parser.add_string_argument("target", "-t", "--target", "", true, "IP or adress of the target machine");
 	parser.add_int_argument("port", "-p", "--port", "", true, "Port of the target machine");
 

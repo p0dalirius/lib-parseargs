@@ -1,23 +1,41 @@
 #include "ArgumentsParser.h"
 
 
+ArgumentsParser::ArgumentsParser() {
+	this->add_boolean_switch_argument("help", "-h", "--help", false, false, "Displays this help message.");
+}
+
+
 int ArgumentsParser::parse_args(int argc, char* argv[]) {
 	int current_arg_index = 1;
 	bool show_help = false;
 	bool mandatory_argument_found = false;
 
-	if (argc < this->positionalArguments.size()) {
-		show_help = true;
-	} else {
-		for (auto& arg_ptr : this->mandatoryArguments) {
-			mandatory_argument_found = false;
+	for (auto& arg_ptr : this->optionalArguments) {
+		if (arg_ptr.name == "help") {
 			for (int k = 1; k < argc; k++) {
 				if ((argv[k] == arg_ptr.shortoption) || (argv[k] == arg_ptr.longoption)) {
-					mandatory_argument_found = true;
+					show_help = true;
 				}
 			}
-			if (mandatory_argument_found == false) {
-				show_help = true;
+		}
+	}
+
+	if (show_help == false) {
+		if (argc < this->positionalArguments.size()) {
+			show_help = true;
+		}
+		else {
+			for (auto& arg_ptr : this->mandatoryArguments) {
+				mandatory_argument_found = false;
+				for (int k = 1; k < argc; k++) {
+					if ((argv[k] == arg_ptr.shortoption) || (argv[k] == arg_ptr.longoption)) {
+						mandatory_argument_found = true;
+					}
+				}
+				if (mandatory_argument_found == false) {
+					show_help = true;
+				}
 			}
 		}
 	}
