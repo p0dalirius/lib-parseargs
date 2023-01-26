@@ -32,4 +32,5 @@
 *.app
 
 # Visual Studio Code
-.vs/
+.vs/*
+x64/*
