@@ -24,9 +24,8 @@ int main(int argc, char* argv[])
 
 	if (std::get<bool>(parser.get_value("verbose")) == true) {
 		std::cout << "Verbose = true";
-	} else {
+	}
+	else {
 		std::cout << "Verbose = false";
 	}
-
-	
 }

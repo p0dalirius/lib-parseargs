@@ -3,7 +3,7 @@
 
 Argument::Argument() {}
 
-Argument::Argument(const std::string& name, ArgumentType argumentType, const std::string& shortoption, const std::string& longoption, const std::string& defaultValue, bool required, const std::string& help)
+Argument::Argument(const std::string& name, ArgumentType argumentType, const std::string& shortoption, const std::string& longoption, const type_of_arguments_value& defaultValue, bool required, const std::string& help)
 	: name(name),
 	argumentType(argumentType),
 	shortoption(shortoption),
@@ -24,10 +24,10 @@ int Argument::parse(int argc, char* argv[], int current_index) {
 		if (current_index <= (argc-1)) {
 			if ((argv[current_index] == this->shortoption) || (argv[current_index] == this->longoption)) {
 				current_index += 1;
-				this->value = "true";
+				this->value = true;
 			}
 			else {
-				this->value = "false";
+				this->value = false;
 			}
 		}
 	}

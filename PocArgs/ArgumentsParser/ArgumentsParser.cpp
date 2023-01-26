@@ -58,27 +58,15 @@ void ArgumentsParser::add_positional_string_argument(const std::string& name, co
 
 void ArgumentsParser::add_boolean_switch_argument(const std::string& name, const std::string& shortoption, const std::string& longoption, bool defaultValue, bool required, const std::string& help) {
 	Argument arg;
-	if (defaultValue == false) {
-		arg = Argument(
-			name,
-			ArgumentType::BooleanSwitchArgument,
-			shortoption,
-			longoption,
-			"false",
-			required,
-			help
-		);
-	} else if (defaultValue == true) {
-		arg = Argument(
-			name,
-			ArgumentType::BooleanSwitchArgument,
-			shortoption,
-			longoption,
-			"true",
-			required,
-			help
-		);
-	}
+	arg = Argument(
+		name,
+		ArgumentType::BooleanSwitchArgument,
+		shortoption,
+		longoption,
+		defaultValue,
+		required,
+		help
+	);
 
 	if (arg.required == true) {
 		this->mandatoryArguments.push_back(arg);
@@ -166,7 +154,7 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 	if (this->optionalArguments.size() != 0) {
 		std::cout << "Optional arguments:\n";
 		for (auto& arg_ptr : this->optionalArguments) {
-			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << " (default: " << arg_ptr.defaultValue << ")" << "\n";
+			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << " (default: " << "arg_ptr.defaultValue" << ")" << "\n";
 		}
 		std::cout << "\n";
 	}
@@ -175,7 +163,11 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 
 void ArgumentsParser::debug() {
 	std::cout << "[debug] len(parser.arguments) = " << this->arguments.size() << "\n";
-	for (std::map<std::string, type_of_arguments_value>::iterator it = this->arguments.begin(); it != this->arguments.end(); ++it) {
-		//std::cout << " - " << it->first << " = " << it->second << "\n";
+
+	for (auto& arg: this->arguments) {
+		std::cout << " - " << std::get<0>(arg) << " = " << "std::get<1>(arg)" << "\n";
 	}
+	//for (std::map<std::string, type_of_arguments_value>::iterator it = this->arguments.begin(); it != this->arguments.end(); ++it) {
+	//	//std::cout << " - " << it->first << " = " << it->second << "\n";
+	//}
 }
