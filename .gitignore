@@ -34,3 +34,4 @@
 # Visual Studio Code
 .vs/*
 x64/*
+PocArgs/x64/*
