@@ -24,25 +24,25 @@
     <ClCompile Include="PocArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Argument.cpp">
-      <Filter>Source Files\ArgumentsParser</Filter>
+    <ClCompile Include="ArgumentsParser\Argument.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArgumentsParser.cpp">
-      <Filter>Source Files\ArgumentsParser</Filter>
+    <ClCompile Include="ArgumentsParser\ArgumentsParser.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArgumentType.cpp">
-      <Filter>Source Files\ArgumentsParser</Filter>
+    <ClCompile Include="ArgumentsParser\ArgumentType.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArgumentsParser.h">
-      <Filter>Header Files\ArgumentsParser</Filter>
+    <ClInclude Include="ArgumentsParser\Argument.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Argument.h">
-      <Filter>Header Files\ArgumentsParser</Filter>
+    <ClInclude Include="ArgumentsParser\ArgumentsParser.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArgumentType.h">
-      <Filter>Header Files\ArgumentsParser</Filter>
+    <ClInclude Include="ArgumentsParser\ArgumentType.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

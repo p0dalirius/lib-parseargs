@@ -126,6 +126,9 @@ void ArgumentsParser::add_int_argument(const std::string& name, const std::strin
 }
 
 
+std::variant<bool, int, std::string> ArgumentsParser::getValue(char* argumentName) {
+
+}
 
 
 void ArgumentsParser::help(int argc, char * argv[]) {
