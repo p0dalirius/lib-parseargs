@@ -16,8 +16,6 @@ using type_of_arguments_value = std::variant<bool, int, std::string>;
 class ArgumentsParser
 {
     public:
-        std::map<std::string, type_of_arguments_value> arguments;
-
         /* Add arguments */
         void add_positional_string_argument(const std::string& name, const std::string& help);
         void add_boolean_switch_argument(const std::string& name, const std::string& shortoption, const std::string& longoption, bool defaultValue, bool required, const std::string& help);
@@ -33,6 +31,8 @@ class ArgumentsParser
         void debug();
 
     private:
+        std::map<std::string, type_of_arguments_value> arguments;
+
         std::list<Argument> positionalArguments;
         std::list<Argument> allArguments;
         std::list<Argument> mandatoryArguments;
