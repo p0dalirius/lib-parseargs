@@ -10,10 +10,13 @@
 #include "ArgumentType.h"
 
 
+using type_of_arguments_value = std::variant<bool, int, std::string>;
+
+
 class ArgumentsParser
 {
     public:
-        std::map<std::string, std::variant<bool, int, std::string>> arguments;
+        std::map<std::string, type_of_arguments_value> arguments;
 
         /* Add arguments */
         void add_positional_string_argument(const std::string& name, const std::string& help);
@@ -23,9 +26,11 @@ class ArgumentsParser
         
         /* Core methods */
         int parse_args(int argc, char* argv[]);
-        std::variant<bool, int, std::string> get_value(char* argument_name);
+        type_of_arguments_value get_value(const char* argument_name);
         void add_subparser(std::string name);
         void help(int argc, char* argv[]);
+        
+        void debug();
 
     private:
         std::list<Argument> positionalArguments;

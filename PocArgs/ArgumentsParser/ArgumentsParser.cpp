@@ -46,9 +46,9 @@ void ArgumentsParser::add_positional_string_argument(const std::string& name, co
 	Argument arg = Argument(
 		name, 
 		ArgumentType::PositionalStringArgument, 
-		(const std::string)"", 
-		(const std::string)"", 
-		(const std::string)"",
+		static_cast<std::string>(""),
+		static_cast<std::string>(""),
+		static_cast<std::string>(""),
 		true, 
 		help
 	);
@@ -126,8 +126,8 @@ void ArgumentsParser::add_int_argument(const std::string& name, const std::strin
 }
 
 
-std::variant<bool, int, std::string> ArgumentsParser::getValue(char* argumentName) {
-
+type_of_arguments_value ArgumentsParser::get_value(const char* argument_name) {
+	return this->arguments[argument_name];
 }
 
 
@@ -169,5 +169,13 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << " (default: " << arg_ptr.defaultValue << ")" << "\n";
 		}
 		std::cout << "\n";
+	}
+}
+
+
+void ArgumentsParser::debug() {
+	std::cout << "[debug] len(parser.arguments) = " << this->arguments.size() << "\n";
+	for (std::map<std::string, type_of_arguments_value>::iterator it = this->arguments.begin(); it != this->arguments.end(); ++it) {
+		//std::cout << " - " << it->first << " = " << it->second << "\n";
 	}
 }
