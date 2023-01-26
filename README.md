@@ -13,7 +13,8 @@
 
  - [x] Optional or required arguments, with default values.
  - [x] Positional arguments.
- - [x] Parsing of arguments and printing of help message if missing mandatory arguments.
+ - [x] Default help option (BooleanSwitch) `-h` or `--help` to display help message.
+ - [x] Parsing of arguments and printing of help message if missing mandatory arguments.b
 
 ![image](./.github/example.png)
 
