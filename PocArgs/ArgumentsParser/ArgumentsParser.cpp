@@ -141,6 +141,9 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 	std::string programpath = ((std::string)argv[0]);
 	std::string programname = programpath.substr(programpath.find_last_of("/\\") + 1);
 
+	type_of_arguments_value value;
+	std::string name;
+
 	std::cout << "Usage: " << programname << " ";
 
 	for (auto& arg_ptr : this->positionalArguments) {
@@ -171,8 +174,21 @@ void ArgumentsParser::help(int argc, char * argv[]) {
 
 	if (this->optionalArguments.size() != 0) {
 		std::cout << "Optional arguments:\n";
-		for (auto& arg_ptr : this->optionalArguments) {
-			std::cout << "   " << arg_ptr.shortoption << ", " << arg_ptr.longoption << " " << arg_ptr.help << " (default: " << "arg_ptr.defaultValue" << ")" << "\n";
+		for (auto& arg : this->optionalArguments) {
+			if (std::holds_alternative<std::string>(arg.value)) {
+				std::cout << "   " << arg.shortoption << ", " << arg.longoption << " " << arg.help << " (default: " << std::get<std::string>(arg.value) << ")" << "\n";
+			}
+			else if (std::holds_alternative<int>(arg.value)) {
+				std::cout << "   " << arg.shortoption << ", " << arg.longoption << " " << arg.help << " (default: " << std::get<int>(arg.value) << ")" << "\n";
+			}
+			else if (std::holds_alternative<bool>(arg.value)) {
+				if (std::get<bool>(arg.value) == true) {
+					std::cout << "   " << arg.shortoption << ", " << arg.longoption << " " << arg.help << " (default: " << "true" << ")" << "\n";
+				}
+				else {
+					std::cout << "   " << arg.shortoption << ", " << arg.longoption << " " << arg.help << " (default: " << "false" << ")" << "\n";
+				}
+			}
 		}
 		std::cout << "\n";
 	}
